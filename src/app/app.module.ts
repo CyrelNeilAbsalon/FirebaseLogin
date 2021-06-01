@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 
 // ENVIRONMENT
 import { environment } from '../environments/environment.prod';
@@ -32,10 +31,9 @@ import { AuthGuard } from './guards/auth.guard';
   IonicModule.forRoot(), 
   AppRoutingModule,
   FormsModule,
-  AngularFireAuthModule,
   AngularFireModule.initializeApp(environment.firebaseConfig),
-  AngularFirestoreModule,
-  AngularFireStorageModule
+  AngularFireAuthModule,
+  AngularFirestoreModule
   ],
   providers: [
   AuthService,

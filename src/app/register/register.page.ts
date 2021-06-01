@@ -48,19 +48,22 @@ export class RegisterPage implements OnInit {
         });
         
         data.user.sendEmailVerification();
-        
       })
       .then(()=> {
-        console.log('success');
+        console.log('REGISTRATION SUCCESS!');
         loading.dismiss();
+        this.toast('Registration Success!', 'success');
+        this.router.navigate(['/login']);
       })
       .catch((error)=> {
         loading.dismiss();
         console.log(error.message);
+        this.toast(error.message, 'danger');
       })
       
     } else {
-     console.log('please fill the form!'); 
+      console.log('Please fill the forms.');
+      this.toast('Please fill the forms.', 'danger');
     }
   } // end of register
   

@@ -22,11 +22,12 @@ export class AuthService {
     private LoadingCtrl: LoadingController,
     private toastr: ToastController
   ) {
-    this.user$ = this.afauth.authState
-    .pipe(
-      switchMap( user => {
-        if(user) {
-          return this.afs.doc(`user/${user.uid}`).valueChanges();
+    this.user$ = this.afauth.authState.pipe(
+      switchMap(user=> 
+      {
+        if(user) 
+        {
+          return this.afs.doc(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -50,7 +51,7 @@ export class AuthService {
       if(!data.user.emailVerified)
       {
         loading.dismiss();
-        this.toast('Please verify your email address!', 'warning');
+        this.toast('Please verify your email address!', 'danger');
         this.logout();
       } else {
         loading.dismiss();
